@@ -1,7 +1,7 @@
 from support import *
 import matplotlib.pyplot as plt
 
-data = loadData('previous-case-counts.csv')
+data = loadData('data.csv')
 #print(data)
 x,y = data
 plt.plot(x,y)
