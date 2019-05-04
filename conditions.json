@@ -1,0 +1,9 @@
+{
+  "City": "Minneapolis",
+  "starting_population": 50000,
+  "starting_infected": 5,
+  "contact_frequency": 100,
+  "transmission_chance": 30,
+  "starting_deaths": 0,
+  "starting day": 0
+}
