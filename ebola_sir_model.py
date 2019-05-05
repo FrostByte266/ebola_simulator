@@ -23,16 +23,16 @@ def run_simulation(conditions):
     i = np.zeros(shape=(duration, 2))
     r = np.zeros(shape=(duration, 2))
 
-    susceptible_start = conditions['starting_healthy']
-    infected = conditions['starting_infected']
-    removed = conditions['starting_deaths']
+    susceptible_start = conditions.get('starting_healthy', 0)
+    infected = conditions.get('starting_infected', 0)
+    removed = conditions.get('starting_dead', 0)
     susceptible = susceptible_start
     infection_rate = 100 * (infected / susceptible)
     death_rate =  0.5
 
     for day in range(0, duration):
         #Run SIR model
-        susceptible_x_infection = susceptible/susceptible_start * (infection_rate*infected)
+        susceptible_x_infection = (susceptible/susceptible_start) * (infection_rate*infected)
         infected_x_death = infected*death_rate
 
         daily_susceptible = susceptible-susceptible_x_infection

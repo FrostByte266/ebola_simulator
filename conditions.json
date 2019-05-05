@@ -1,7 +1,7 @@
 {
   "city": "Minneapolis",
   "starting_healthy": 47000,
-  "starting_infected": 470,
+  "starting_infected": 500,
   "starting_deaths": 0,
   "starting_day": 0,
   "ending_day": 30
