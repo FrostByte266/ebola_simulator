@@ -1,7 +1,6 @@
 import numpy as np
 import json
 import os
-from random import randint
 import matplotlib.pyplot as plt
 
 def loadData(path):
@@ -19,20 +18,13 @@ def runSimulation(conditions):
     s = np.zeros(shape=(duration, 2))
     i = np.zeros(shape=(duration, 2))
     r = np.zeros(shape=(duration, 2))
-    #Make plot points with randomized death counts
-    totalRemoved = conditions['starting_deaths']
-    totalSusceptible = conditions['starting_healthy']
-    totalInfected = conditions['starting_infected']
-
     for day in range(0, duration):
-        s[day] = [day+1, totalSusceptible]
-        i[day] = [day+1, totalInfected]
-        r[day] = [day+1, totalRemoved]
+        #Run SIR model
+        pass
 
     return s, i, r
 
 def plotSim(simResults, simConfig):
-    #(simResults)
     """Create plot of simulation given the results of a simulation"""
     #Configure plot labels
     plt.title("Estimated effect of ebola outbreak on {}".format(simConfig["city"]))
@@ -53,8 +45,8 @@ def plotSim(simResults, simConfig):
 
 def main():
     simData = loadData('conditions.json')
-    simVals = runSimulation(simData)
-    plotSim(simVals, simData)
+    simResults = runSimulation(simData)
+    plotSim(simResults, simData)
 
 if __name__ == '__main__':
     main()
