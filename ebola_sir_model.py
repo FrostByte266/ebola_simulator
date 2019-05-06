@@ -49,8 +49,6 @@ def run_simulation(conditions):
         i[day] = [next_day, infected]
         r[day] = [next_day, removed]
 
-
-
     return s, i, r
 
 def plot_sim(sim_results, sim_config):
@@ -71,12 +69,23 @@ def plot_sim(sim_results, sim_config):
     #Show plot
     plt.legend()
     plt.show()
+    #Generate report
+    last_day = sim_config.get('sim_duration',0 ) - 1
+    final_susceptible = int(round(sim_results[0][last_day][1]))
+    final_infected = int(round(sim_results[1][last_day][1]))
+    final_removed = int(round(sim_results[2][last_day][1]))
+    results = {"Final number of healthy": final_susceptible,
+               "Final number of infected": final_infected,
+               "Final number of dead": final_removed}
+    return results
 
 def main():
     np.set_printoptions(suppress=True)
     sim_data = load_data('conditions.json')
     simResults = run_simulation(sim_data)
-    plot_sim(simResults, sim_data)
+    data = plot_sim(simResults, sim_data)
+    for (key, value) in data.items():
+        print("{}: {}".format(key, value))
 
 if __name__ == '__main__':
     main()
