@@ -33,6 +33,7 @@ def run_simulation(conditions):
 
     for day in range(0, duration):
         #Run SIR model
+        next_day = day+1
         susceptible_x_infection = (susceptible/susceptible_start) * (infection_rate*infected)
         infected_x_death = infected*death_rate
         susceptible_x_dead = susceptible / susceptible_start * (infection_rate * reduced_rate * removed)
@@ -44,9 +45,9 @@ def run_simulation(conditions):
         susceptible = daily_susceptible
         infected = daily_infected
 
-        s[day] = [day+1, susceptible]
-        i[day] = [day+1, infected]
-        r[day] = [day+1, removed]
+        s[day] = [next_day, susceptible]
+        i[day] = [next_day, infected]
+        r[day] = [next_day, removed]
 
     return s, i, r
 
