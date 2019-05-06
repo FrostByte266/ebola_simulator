@@ -17,7 +17,7 @@ def load_data(path):
 
 def run_simulation(conditions):
     """Run simulation with given conditions and return tuple of S, I, and R"""
-    duration = conditions['ending_day'] - conditions['starting_day']
+    duration = conditions.get('sim_duration', 0)
     #Initialize numpy arrays
     s = np.zeros(shape=(duration, 2))
     i = np.zeros(shape=(duration, 2))
@@ -28,8 +28,8 @@ def run_simulation(conditions):
     removed = conditions.get('starting_dead', 0)
     susceptible = susceptible_start
     infection_rate = 100 * (infected / susceptible)
-    death_rate =  0.5
-    reduced_rate = 0.3
+    death_rate =  conditions.get('death_rate', 0)
+    reduced_rate = conditions.get('body_infection_rate', 0)
 
     for day in range(0, duration):
         #Run SIR model
@@ -49,6 +49,8 @@ def run_simulation(conditions):
         i[day] = [next_day, infected]
         r[day] = [next_day, removed]
 
+
+
     return s, i, r
 
 def plot_sim(sim_results, sim_config):
@@ -67,7 +69,6 @@ def plot_sim(sim_results, sim_config):
     rx, ry = sim_results[2].T
     plt.plot(rx, ry, label="Removed")
     #Show plot
-    # np.savetxt('results.csv', simResults[0], delimiter=',', fmt='%.0f')
     plt.legend()
     plt.show()
 
