@@ -36,13 +36,13 @@ def run_simulation(conditions):
         next_day = day+1
         susceptible_x_infection = (susceptible/susceptible_start) * (infection_rate*infected)
         infected_x_death = infected*death_rate
-        susceptible_x_dead = susceptible / susceptible_start * (infection_rate * reduced_rate * removed)
+        susceptible_x_dead = (susceptible / susceptible_start) * (infection_rate * reduced_rate * removed)
 
-        daily_susceptible = susceptible-susceptible_x_infection
-        daily_infected = infected + susceptible_x_infection + susceptible_x_dead - infected_x_death
+        newly_infected =  susceptible_x_infection + susceptible_x_dead  if susceptible_x_infection + susceptible_x_dead < susceptible else susceptible
+        daily_infected = infected + newly_infected - infected_x_death
         removed = removed + infected_x_death
 
-        susceptible = daily_susceptible
+        susceptible = susceptible - daily_infected
         infected = daily_infected
 
         s[day] = [next_day, susceptible]
