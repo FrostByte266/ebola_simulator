@@ -42,7 +42,7 @@ def run_simulation(conditions):
         daily_infected = infected + newly_infected - infected_x_death
         removed = removed + infected_x_death
 
-        susceptible = susceptible - daily_infected
+        susceptible = susceptible - susceptible_x_infection
         infected = daily_infected
 
         s[day] = [next_day, susceptible]

@@ -3,7 +3,7 @@
   "starting_healthy": 422331,
   "starting_infected": 500,
   "starting_dead": 0,
-  "death_rate": 0.1,
-  "body_infection_rate": 0.05,
+  "death_rate": 0.5,
+  "body_infection_rate": 0.3,
   "sim_duration": 365
 }
