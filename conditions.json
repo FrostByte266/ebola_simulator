@@ -4,6 +4,6 @@
   "starting_infected": 500,
   "starting_dead": 0,
   "death_rate": 0.02,
-  "body_infection_rate": 0.3,
+  "body_infection_rate": 0.7,
   "sim_duration": 365
 }
