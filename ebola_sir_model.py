@@ -29,7 +29,6 @@ def run_simulation(conditions):
     susceptible = susceptible_start
     infection_rate = 100 * (infected / susceptible)
     death_rate =  conditions.get('death_rate', 0)
-    reduced_rate = conditions.get('body_infection_rate', 0)
 
     for day in range(0, duration):
         #Run SIR model
