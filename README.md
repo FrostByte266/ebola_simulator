@@ -1,3 +1,10 @@
+### This respository was created for a High School project
+## State - Fully Completed
+## Skills improved upon:
+* Matplotlib / Data visualization
+* Python
+* NumPy
+
 # Modeling Ebola epidemics with Python
 This python program uses matplotlib and numpy to simulate the projected outcome of an Ebola outbrak on a city.
 It runs the SIR Model (Susceptible Infected Removed) to calculate these numbers. 
